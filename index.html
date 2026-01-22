@@ -4,7 +4,6 @@
     <meta charset="utf-8"/>
     <title>Guía de Misiones - Dofus</title>
     <style>
-        /* TUS ESTILOS ORIGINALES */
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0b0d17; color: #e0e0e0; padding: 20px; line-height: 1.6; }
         .nivel-seccion { max-width: 900px; margin: 20px auto; }
         h1 { color: #00ffa3; text-align: center; border-bottom: 2px solid #00ffa333; padding-bottom: 15px; font-size: 2.5em; }
@@ -15,7 +14,6 @@
             font-weight: bold;
             color: #00ffa3;
             text-decoration: none;
-            /* Cambiamos block por inline-block para que el área de clic se ajuste al texto */
             display: inline-block; 
             width: fit-content;
             margin-bottom: 10px;
@@ -28,7 +26,6 @@
 }
         .mision-desc { font-size: 1.05em; color: #b1bac4; border-top: 1px solid #30363d; padding-top: 10px; }
 
-        /* NUEVOS ESTILOS PARA LAS PÁGINAS */
         .nav-container {
             display: flex;
             flex-wrap: wrap;
@@ -57,24 +54,20 @@
             color: #0b0d17;
         }
 
-        /* Ocultar secciones por defecto */
         .nivel-seccion {
             display: none;
         }
 
-        /* Mostrar la sección activa */
         .nivel-seccion.active {
             display: block;
         }
 
-        /* Estilo para la tarjeta completada */
         .mision-card.completada {
             opacity: 0.4;
             filter: grayscale(100%);
             border-color: #00ffa355;
         }
 
-        /* Contenedor del checkbox */
         .completar-check {
             margin-top: 15px;
             display: flex;
@@ -90,7 +83,6 @@
             width: 18px;
             height: 18px;
         }
-        /* Estilos para el contador flotante */
         .tracker-progreso {
             position: fixed;
             bottom: 20px;
@@ -130,25 +122,24 @@
 
         .barra-interna {
             background: #00ffa3;
-            width: 0%; /* Se controla con JS */
+            width: 0%; 
             height: 100%;
             transition: width 0.4s ease-out;
             box-shadow: 0 0 10px #00ffa3aa;
         }
-        /* Botón para subir al principio */
         #btn-top {
-            display: none; /* Oculto por defecto */
+            display: none; 
             position: fixed;
-            bottom: 100px; /* Situado encima del tracker de progreso */
+            bottom: 100px; 
             right: 25px;
-            z-index: 1001; /* Por encima de todo */
+            z-index: 1001; 
             border: 2px solid #00ffa3;
             outline: none;
             background-color: #161b22;
             color: #00ffa3;
             cursor: pointer;
             padding: 10px 15px;
-            border-radius: 50%; /* Forma circular */
+            border-radius: 50%; 
             font-size: 20px;
             font-weight: bold;
             transition: 0.3s;
@@ -232,7 +223,6 @@ function cargarYActualizarTodo() {
     actualizarBarra();
 }
 
-// Mantenemos tu función de pestañas original para que no se rompa nada
 function mostrarNivel(idNivel, boton) {
     // 1. Ocultamos todas las secciones y quitamos estados activos
     document.querySelectorAll('.nivel-seccion').forEach(sec => {
@@ -249,36 +239,26 @@ function mostrarNivel(idNivel, boton) {
     }
     boton.classList.add('active');
     
-    // 3. El truco: esperar un instante a que el navegador procese el cambio
     setTimeout(() => {
-        // Opción A: Scroll suave de la ventana
         window.scrollTo({
             top: 0,
-            behavior: 'instant' // Usamos 'instant' para evitar que se quede a mitad de camino
+            behavior: 'instant'
         });
-
-        // Opción B: Forzar el scroll en el elemento raíz (refuerzo)
-        document.documentElement.scrollTop = 0;
-        
-        // Opción C: Forzar el scroll en el body (refuerzo para navegadores antiguos)
+        document.documentElement.scrollTop = 0;        
         document.body.scrollTop = 0;
     }, 10); 
 }
-        // Función para que el botón suba la página
         function subirArriba() {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth' // Subida suave
+                behavior: 'smooth'
             });
-            // Respaldo para navegadores que no soportan smooth
             document.documentElement.scrollTop = 0;
             document.body.scrollTop = 0;
         }
 
-        // Detectar el scroll para mostrar u ocultar el botón
         window.onscroll = function() {
             const boton = document.getElementById("btn-top");
-            // Si bajamos más de 300px, mostramos el botón
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 boton.style.display = "block";
             } else {
