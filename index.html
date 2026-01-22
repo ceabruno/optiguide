@@ -224,29 +224,41 @@ function cargarYActualizarTodo() {
 }
 
 function mostrarNivel(idNivel, boton) {
-    // 1. Ocultamos todas las secciones y quitamos estados activos
-    document.querySelectorAll('.nivel-seccion').forEach(sec => {
-        sec.classList.remove('active');
-    });
-    document.querySelectorAll('.nav-button').forEach(btn => {
-        btn.classList.remove('active');
-    });
+    document.querySelectorAll('.nivel-seccion').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
 
-    // 2. Mostramos la sección elegida y activamos su botón
-    const seccion = document.getElementById(idNivel);
-    if (seccion) {
-        seccion.classList.add('active');
+    const seccionActiva = document.getElementById(idNivel);
+    if (!seccionActiva) return; 
+    seccionActiva.classList.add('active');
+
+    let botonActivo = boton;
+    if (!botonActivo) {
+        botonActivo = document.querySelector(`button[onclick*="${idNivel}"]`);
     }
-    boton.classList.add('active');
-    
+
+    if (botonActivo) {
+        botonActivo.classList.add('active');
+    }
+
     setTimeout(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'instant'
-        });
-        document.documentElement.scrollTop = 0;        
-        document.body.scrollTop = 0;
-    }, 10); 
+        const completadas = seccionActiva.querySelectorAll('.mision-card.completada');
+        const menuHeight = document.querySelector('.nav-container')?.offsetHeight || 80;
+
+        if (completadas.length > 0) {
+            const ultima = completadas[completadas.length - 1];
+            const posicion = ultima.offsetTop - menuHeight - 20;
+
+            window.scrollTo({
+                top: posicion,
+                behavior: 'smooth'
+            });
+        } else {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    }, 150); 
 }
         function subirArriba() {
             window.scrollTo({
