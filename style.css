@@ -1,0 +1,169 @@
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0b0d17; color: #e0e0e0; padding: 20px; line-height: 1.6; }
+        .nivel-seccion { max-width: 900px; margin: 20px auto; }
+        h1 { color: #00ffa3; text-align: center; border-bottom: 2px solid #00ffa333; padding-bottom: 15px; font-size: 2.5em; }
+        .mision-card { background: #161b22; margin: 20px 0; padding: 25px; border-radius: 12px; border: 1px solid #30363d; transition: 0.3s; }
+        .mision-card:hover { border-color: #00ffa3; transform: translateY(-2px); }
+        .mision-titulo {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #00ffa3;
+            text-decoration: none;
+            display: inline-block; 
+            width: fit-content;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .mision-titulo:hover {
+            text-decoration: underline;
+            color: #5effc4;
+}
+        .mision-desc { font-size: 1.05em; color: #b1bac4; border-top: 1px solid #30363d; padding-top: 10px; }
+
+        .nav-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 0;
+            background: #0b0d17;
+            padding: 10px;
+            z-index: 100;
+        }
+
+        .nav-button {
+            background: #161b22;
+            color: #00ffa3;
+            border: 1px solid #00ffa3;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-button:hover, .nav-button.active {
+            background: #00ffa3;
+            color: #0b0d17;
+        }
+
+        .nivel-seccion {
+            display: none;
+        }
+
+        .nivel-seccion.active {
+            display: block;
+        }
+
+        .mision-card.completada {
+            opacity: 0.4;
+            filter: grayscale(100%);
+            border-color: #00ffa355;
+        }
+
+        .completar-check {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            color: #00ffa3;
+            cursor: pointer;
+        }
+
+        .completar-check input {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        .tracker-progreso {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #161b22;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #00ffa3;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            z-index: 1000;
+            width: 200px;
+        }
+
+        .info-texto {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        #txt-porcentaje {
+            color: #00ffa3;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        #txt-conteo {
+            color: #b1bac4;
+        }
+
+        .barra-externa {
+            background: #30363d;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .barra-interna {
+            background: #00ffa3;
+            width: 0%; 
+            height: 100%;
+            transition: width 0.4s ease-out;
+            box-shadow: 0 0 10px #00ffa3aa;
+        }
+        #btn-top {
+            display: none; 
+            position: fixed;
+            bottom: 100px; 
+            right: 25px;
+            z-index: 1001; 
+            border: 2px solid #00ffa3;
+            outline: none;
+            background-color: #161b22;
+            color: #00ffa3;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 50%; 
+            font-size: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(0, 255, 163, 0.3);
+        }
+
+        #btn-top:hover {
+            background-color: #00ffa3;
+            color: #0b0d17;
+            transform: scale(1.1);
+        }
+        #buscador {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 20px;
+            background: #0b0d17;
+            border: 1px solid #00ffa3;
+            border-radius: 25px;
+            color: #00ffa3;
+            font-size: 1em;
+            outline: none;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(0, 255, 163, 0.1);
+        }
+
+        #buscador:focus {
+            box-shadow: 0 0 15px rgba(0, 255, 163, 0.4);
+            background: #161b22;
+        }
+
+        #buscador::placeholder {
+            color: rgba(0, 255, 163, 0.5);
+        }
